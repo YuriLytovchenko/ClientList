@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:gravity="fill"
+    tools:context="com.example.clientlist.MainActivity" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="7" >
+        
+        <HorizontalScrollView
+            android:layout_width="fill_parent"
+            android:minHeight="60dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+        <LinearLayout
+            android:id="@+id/buttonBar"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal" 
+            android:layout_marginBottom="10dp"
+            ></LinearLayout>
+        </HorizontalScrollView>
+        
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6" >
+        </ListView>
+    </LinearLayout>
+
+</RelativeLayout>

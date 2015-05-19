@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1"
+    android:shrinkColumns="0"
+    android:background="@color/darkgray" >
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_span="2"
+            android:background="@color/goldenrod"
+            android:gravity="left|center_vertical"
+            android:padding="10dp"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </TableRow>
+
+    <TableRow android:layout_width="fill_parent" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/name"
+            android:padding="10dp"
+            android:text="@string/dialog_filter_name"
+            android:textColor="@color/goldenrod" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:minWidth="150dp"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_margin="5dp"
+            android:background="@color/goldenrod"
+            android:inputType="textNoSuggestions" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:labelFor="@+id/include"
+            android:padding="10dp"
+            android:text="@string/dialog_filter_include"
+            android:textColor="@color/goldenrod" />
+
+        <EditText
+            android:id="@+id/include"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_margin="5dp"
+            android:background="@color/goldenrod"
+            android:inputType="textNoSuggestions" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:labelFor="@+id/exclude"
+            android:padding="10dp"
+            android:text="@string/dialog_filter_exclude"
+            android:textColor="@color/goldenrod" />
+
+        <EditText
+            android:id="@+id/exclude"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_column="1"
+            android:layout_margin="5dp"
+            android:background="@color/goldenrod"
+            android:inputType="textNoSuggestions" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/help_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_span="2"
+            android:maxLines="100"
+            android:padding="10dp"
+            android:paddingBottom="20dp"
+            android:scrollHorizontally="false"
+            android:text="@string/dialog_filter_delimiter"
+            android:textColor="@color/goldenrod" />
+    </TableRow>
+
+</TableLayout>

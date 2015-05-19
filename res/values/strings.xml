@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ClientList</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Help</string>
+    <string name="appinfo_icon_text">Icon</string>
+    <string name="filter_menu_add">Add new</string>
+    <string name="filter_menu_edit">Change filter</string>
+    <string name="filter_menu_delete">Delete</string>
+    <string name="dialog_filter_name">Name:</string>
+    <string name="dialog_filter_include">Include keywords:</string>
+    <string name="dialog_filter_exclude">Exclude keywords:</string>
+    <string name="dialog_filter_delimiter">You can specify multiple keywords using ; as a delimiter</string>
+    <string name="add_filter">Add new filter</string>
+    <string name="edit_filter">Edit filter: </string>
+        
+</resources>
