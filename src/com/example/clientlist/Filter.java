@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import android.util.Log;
+
 
 //it is a rule to include or exclude applications according to their package names
 public class Filter implements Serializable {
@@ -19,13 +21,28 @@ public class Filter implements Serializable {
 	
 	public Filter(String name, String includeString, String excludeString) {
 		this.name = name;
+		
 		//split the delimited strings into list of keywords
-		this.keywordsInclude = new ArrayList<String>(
-				Arrays.asList(
-						includeString.split(DELIMITER)));
-		this.keywordsExclude = new ArrayList<String>(
-				Arrays.asList(
-						excludeString.split(DELIMITER)));
+		//trim them because usually the system adds a space after semicolon 
+		String[] temp = includeString.split(DELIMITER);
+		for(int i=0; i<temp.length; i++)
+			this.keywordsInclude.add(temp[i].trim());
+		
+		if(MainActivity.DEBUG) {
+			Log.d("TEMP_TAG", this.keywordsInclude.toString());
+		}
+		
+		temp = excludeString.split(DELIMITER);
+		for(int i=0; i<temp.length; i++)
+			this.keywordsExclude.add(temp[i].trim());
+		
+//		this.keywordsInclude = new ArrayList<String>(
+//				Arrays.asList(
+//						includeString.split(DELIMITER)));
+//		this.keywordsExclude = new ArrayList<String>(
+//				Arrays.asList(
+//						excludeString.split(DELIMITER)));
+		
 	}
 	
 	public Filter(String name, List<String> keywordsInclude, List<String> keywordsExclude) {
@@ -51,11 +68,27 @@ public class Filter implements Serializable {
 	public void setKeywordsInclude(List<String> keywordsInclude) {
 		this.keywordsInclude = keywordsInclude;
 	}
+	public void setKeywordsInclude(String keywordsInclude) {
+		this.keywordsInclude = new ArrayList<String>();
+		String[] temp = keywordsInclude.split(DELIMITER);
+		for(int i=0; i<temp.length; i++)
+			this.keywordsInclude.add(temp[i].trim());
+		
+	}
+	
 	public List<String> getKeywordsExclude() {
 		return keywordsExclude;
 	}
 	public void setKeywordsExclude(List<String> keywordsExclude) {
 		this.keywordsExclude = keywordsExclude;
+	}
+	
+	public void setKeywordsExclude(String keywordsExclude) {
+		this.keywordsExclude = new ArrayList<String>();
+		String[] temp = keywordsExclude.split(DELIMITER);
+		for(int i=0; i<temp.length; i++)
+			this.keywordsExclude.add(temp[i].trim());
+		
 	}
 	
 	

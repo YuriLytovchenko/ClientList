@@ -38,7 +38,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity implements FilterDialog.FilterDialogListener {
 	public final static String TAG_INFO = "[INFO]";
 	public final static String TAG_ERROR = "[ERROR]";
-	public final static boolean DEBUG = true;
+	public final static boolean DEBUG = false;
 	public final static String FILENAME = "filters.dat";
 	public final static String DEFAULT_INCLUDE_FILTER = "playtech";
 
@@ -137,7 +137,15 @@ public class MainActivity extends Activity implements FilterDialog.FilterDialogL
     protected void onPause() {
     	super.onPause();
     	saveFiltersToFile();
+    	//TODO: empty the array so on resuming the app it will re-read the list
     }
+    
+//    @Override
+//    protected void onResume() {
+//    	super.onResume();
+//    	
+//    
+//    }
     
     
     //loads all the applications that are installed on device
@@ -161,8 +169,19 @@ public class MainActivity extends Activity implements FilterDialog.FilterDialogL
             newInfo.setVersionName(p.versionName);
             newInfo.setVersionCode(p.versionCode);
             newInfo.setIcon(p.applicationInfo.loadIcon(getPackageManager()));
+            
+            if(DEBUG) {
+            	Log.d(TAG_INFO, "Trying to add new app: ");
+            	Log.d(TAG_INFO, "Package: " + newInfo.getPackageName());
+            	Log.d(TAG_INFO, "App name: " + newInfo.getAppname());
+            }
+            
             result.add(newInfo);
         }
+        
+    	if(DEBUG)
+    		Log.d(TAG_INFO, "Exiting getAllApps");
+
         return result; 
     }
     
@@ -427,10 +446,8 @@ public class MainActivity extends Activity implements FilterDialog.FilterDialogL
 		else
 			filters.add(filter);
 		filter.setName(args.getString("nameEdit"));
-		filter.setKeywordsInclude(Arrays.asList(
-				args.getString("includeEdit").split(Filter.DELIMITER)	));
-		filter.setKeywordsExclude(Arrays.asList(
-				args.getString("excludeEdit").split(Filter.DELIMITER)	));
+		filter.setKeywordsInclude(args.getString("includeEdit"));
+		filter.setKeywordsExclude(args.getString("excludeEdit"));
 
 		refreshFilterList();
 		//update the list of applications with current filter
